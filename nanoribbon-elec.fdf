@@ -1,0 +1,99 @@
+SystemName          nanoribbon
+SystemLabel         nanoribbon
+
+NumberOfAtoms         28 
+NumberOfSpecies        2
+
+%block ChemicalSpeciesLabel
+  1   6  C
+  2   1  H
+%endblock ChemicalSpeciesLabel
+
+
+%block PAO.Basis                 # Define Basis set
+C           2                    # Species label, number of l-shells
+ n=2   0   1                         # n, l, Nzeta
+   4.088    
+   1.000    
+ n=2   1   1                       # n, l, Nzeta, Polarization, NzetaPol
+   4.870      
+   1.000      
+H           1
+ n=1   0   1
+    4.500
+    1.000
+%endblock PAO.Basis
+
+XC.functional GGA
+XC.authors    PBE
+ 
+LatticeConstant     1.433600 Ang 
+%block LatticeVectors
+   20.00000000        0.0000000000        0.0000000000
+   0.000000000       20.0000000000        0.0000000000
+   0.000000000        0.0000000000        3.4641016160
+%endblock LatticeVectors
+
+AtomicCoordinatesFormat ScaledCartesian 
+%block AtomicCoordinatesAndAtomicSpecies
+0.00000000000	1.00000000000	0.00000000000	1
+0.00000000000	2.00000000000	0.00000000000	1
+0.00000000000	4.00000000000	0.00000000000	1
+0.00000000000	5.00000000000	0.00000000000	1
+0.00000000000	7.00000000000	0.00000000000	1
+0.00000000000	8.00000000000	0.00000000000	1
+0.00000000000 -0.25000000000	0.86602540400	2
+0.00000000000	0.50000000000	0.86602540400	1
+0.00000000000	2.50000000000	0.86602540400	1
+0.00000000000	3.50000000000	0.86602540400	1
+0.00000000000	5.50000000000	0.86602540400	1
+0.00000000000	6.50000000000	0.86602540400	1
+0.00000000000	8.50000000000	0.86602540400	1
+0.00000000000  9.25000000000	0.86602540400	2
+0.00000000000	1.00000000000	1.73205080800	1
+0.00000000000	2.00000000000	1.73205080800	1
+0.00000000000	4.00000000000	1.73205080800	1
+0.00000000000	5.00000000000	1.73205080800	1
+0.00000000000	7.00000000000	1.73205080800	1
+0.00000000000	8.00000000000	1.73205080800	1
+0.00000000000 -0.25000000000	2.59807621200	2
+0.00000000000	0.50000000000	2.59807621200	1
+0.00000000000	2.50000000000	2.59807621200	1
+0.00000000000	3.50000000000	2.59807621200	1
+0.00000000000	5.50000000000	2.59807621200	1
+0.00000000000	6.50000000000	2.59807621200	1
+0.00000000000	8.50000000000	2.59807621200	1
+0.00000000000	9.25000000000	2.59807621200	2
+
+%endblock AtomicCoordinatesAndAtomicSpecies
+
+%block kgrid_Monkhorst_Pack
+   1   0   0  0.0
+   0   10   0  0.0
+   0   0  30  0.5
+%endblock Kgrid_Monkhorst_Pack
+
+MeshCutoff         100.0 Ry
+
+MaxSCFIterations     500
+DM.MixingWeight      0.2
+DM.NumberPulay       5
+DM.Tolerance         1.d-4
+
+WriteCoorXmol .true.
+
+BandLinesScale ReciprocalLatticeVectors
+
+%block BandLines
+1   0.0 0.0 0.0 \Gamma
+100 0.0 0.0 0.5 X
+%endblock BandLines
+
+
+SolutionMethod       diagon
+
+
+
+
+SolutionMethod   diagon
+TS.WriteHS  .true.
